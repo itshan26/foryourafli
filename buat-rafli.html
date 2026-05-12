@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hey, Rafli 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 25%, #ffeaa7 50%, #dfe6e9 75%, #a29bfe 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+  }
+  .confetti { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+  .dot { position:absolute; border-radius:50%; animation:floatDot linear infinite; opacity:0.4; }
+  @keyframes floatDot { 0%{transform:translateY(100vh) rotate(0deg);opacity:0;} 10%{opacity:0.4;} 90%{opacity:0.4;} 100%{transform:translateY(-100px) rotate(720deg);opacity:0;} }
+
+  .container { max-width: 580px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .hero { text-align: center; margin-bottom: 2rem; animation: fadeDown 0.8s ease both; }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-30px);} to{opacity:1;transform:translateY(0);} }
+  .hero-emoji { font-size: 4rem; display: block; margin-bottom: 0.5rem; animation: bounce 2s ease infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+  .hero-title { font-family:'Pacifico',cursive; font-size:2.2rem; color:#6c5ce7; text-shadow:3px 3px 0px rgba(108,92,231,0.2); line-height:1.2; margin-bottom:0.5rem; }
+  .hero-sub { font-size:1rem; color:#636e72; font-weight:600; }
+
+  .section-divider { text-align:center; margin: 1.5rem 0; }
+  .section-label { display:inline-block; background:white; border-radius:20px; padding:6px 20px; font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#a29bfe; box-shadow:3px 3px 0px rgba(0,0,0,0.06); }
+
+  .card {
+    background: white; border-radius: 24px; padding: 1.5rem; margin-bottom: 1.2rem;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.08); animation: fadeUp 0.6s ease both;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: default;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 8px 10px 0px rgba(0,0,0,0.1); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+  .aff-cards .card:nth-child(1){animation-delay:0.1s;border-left:5px solid #fd79a8;}
+  .aff-cards .card:nth-child(2){animation-delay:0.2s;border-left:5px solid #fdcb6e;}
+  .aff-cards .card:nth-child(3){animation-delay:0.3s;border-left:5px solid #55efc4;}
+  .aff-cards .card:nth-child(4){animation-delay:0.4s;border-left:5px solid #74b9ff;}
+  .aff-cards .card:nth-child(5){animation-delay:0.5s;border-left:5px solid #a29bfe;}
+
+  .card-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#b2bec3; margin-bottom:0.4rem; }
+  .card-title { font-size:1.1rem; font-weight:700; color:#2d3436; margin-bottom:0.5rem; }
+  .card-text { font-size:0.95rem; color:#636e72; line-height:1.6; }
+  .card-text em { font-style:normal; font-weight:700; color:#6c5ce7; }
+
+  .highlight-card {
+    background: linear-gradient(135deg, #667eea, #764ba2); color:white; border:none !important;
+    border-radius:24px; padding:2rem; text-align:center; margin-bottom:1.2rem;
+    box-shadow:6px 6px 0px rgba(102,126,234,0.3); animation:fadeUp 0.6s ease 0.6s both;
+  }
+  .highlight-card .card-title { color:white; font-size:1.4rem; font-family:'Pacifico',cursive; margin-bottom:0.8rem; }
+  .highlight-card .card-text { color:rgba(255,255,255,0.85); font-size:1rem; }
+  .stars { font-size:1.5rem; margin-bottom:0.5rem; letter-spacing:4px; }
+  .pulse { animation: pulse 2s ease infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
+
+  .progress-bar-wrap { background:rgba(255,255,255,0.5); border-radius:20px; height:8px; margin-bottom:1.5rem; overflow:hidden; }
+  .progress-bar { height:100%; border-radius:20px; background:linear-gradient(90deg,#a29bfe,#fd79a8); transition:width 0.5s ease; }
+
+  .qcard { background:white; border-radius:24px; padding:1.8rem; box-shadow:6px 6px 0px rgba(0,0,0,0.08); animation:fadeUp 0.5s ease both; }
+  .q-label { font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#b2bec3; margin-bottom:0.5rem; }
+  .q-num { font-size:0.8rem; font-weight:700; color:#a29bfe; margin-bottom:0.3rem; }
+  .q-text { font-size:1.1rem; font-weight:700; color:#2d3436; margin-bottom:1.2rem; line-height:1.4; }
+
+  .options { display:flex; flex-direction:column; gap:10px; }
+  .option-btn {
+    background:#f8f9fa; border:2px solid #e0e0ff; border-radius:16px;
+    padding:0.8rem 1.2rem; font-family:'Nunito',sans-serif; font-size:0.95rem;
+    font-weight:600; color:#2d3436; cursor:pointer; text-align:left; transition:all 0.2s ease;
+  }
+  .option-btn:hover { background:#f0efff; border-color:#a29bfe; transform:translateX(4px); }
+  .option-btn.selected { background:linear-gradient(135deg,#a29bfe,#fd79a8); color:white; border-color:transparent; transform:translateX(4px); }
+
+  .response-box {
+    margin-top:1rem; background:linear-gradient(135deg,#a29bfe15,#fd79a815);
+    border-left:4px solid #a29bfe; border-radius:12px; padding:1rem;
+    font-size:0.9rem; color:#2d3436; line-height:1.6; animation:fadeUp 0.4s ease both; display:none;
+  }
+  .response-box.show { display:block; }
+  .response-emoji { font-size:1.3rem; margin-bottom:0.3rem; display:block; }
+
+  .next-btn {
+    margin-top:1.2rem; background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:white;
+    border:none; border-radius:16px; padding:0.8rem 1.5rem; font-family:'Nunito',sans-serif;
+    font-size:0.95rem; font-weight:700; cursor:pointer; width:100%;
+    transition:transform 0.2s ease, opacity 0.2s ease; display:none;
+  }
+  .next-btn:hover { transform:translateY(-2px); opacity:0.9; }
+  .next-btn.show { display:block; }
+
+  .final-card {
+    background:white; border-radius:24px; padding:2rem; text-align:center;
+    box-shadow:6px 6px 0px rgba(0,0,0,0.08); animation:fadeUp 0.6s ease both; display:none;
+  }
+  .final-card.show { display:block; }
+  .final-emoji { font-size:3rem; display:block; margin-bottom:0.8rem; }
+  .final-title { font-family:'Pacifico',cursive; font-size:1.5rem; color:#6c5ce7; margin-bottom:0.8rem; }
+  .final-text { font-size:0.95rem; color:#636e72; line-height:1.7; }
+  .final-answers { margin-top:1.2rem; text-align:left; }
+  .final-answer-item { background:#f8f9fa; border-radius:12px; padding:0.7rem 1rem; margin-bottom:0.5rem; font-size:0.85rem; color:#636e72; }
+  .final-answer-item strong { color:#6c5ce7; }
+
+  .footer { text-align:center; padding:1.5rem; animation:fadeUp 0.6s ease 1s both; }
+  .footer-text { font-family:'Pacifico',cursive; font-size:1.1rem; color:#6c5ce7; }
+  .footer-sub { font-size:0.85rem; color:#b2bec3; margin-top:0.3rem; }
+</style>
+</head>
+<body>
+<div class="confetti" id="confetti"></div>
+<div class="container">
+
+  <div class="hero">
+    <span class="hero-emoji">🌸</span>
+    <h1 class="hero-title">hey, Rafli 👋</h1>
+    <p class="hero-sub">ini buat kamu, semoga bikin hari kamu lebih baik 🙂</p>
+  </div>
+
+  <div class="section-divider"><span class="section-label">✨ untuk kamu</span></div>
+
+  <div class="aff-cards">
+    <div class="card">
+      <div class="card-label">✨ for you</div>
+      <div class="card-title">kamu udah lakuin hal yang luar biasa hari ini</div>
+      <div class="card-text">even kalau hari ini kerasa berat, atau biasa aja, kamu tetep ngejalanin semuanya. <em>itu udah cukup.</em> dan itu keren banget.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">💛 reminder</div>
+      <div class="card-title">cara kamu senyum itu genuinely menyenangkan</div>
+      <div class="card-text">aku belum tau banyak hal tentang kamu, tapi <em>itu salah satu hal pertama yang aku notice.</em> some things just stand out, ya kan? 🙂</div>
+    </div>
+    <div class="card">
+      <div class="card-label">🌿 hal yang aku suka</div>
+      <div class="card-title">cara kamu cerita soal hal-hal kecil</div>
+      <div class="card-text">entah itu renang sama keluarga, atau main sama temen lama, kamu ceritain dengan <em>genuinely happy energy.</em> itu wholesome banget dan aku suka dengerin.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">💙 just so you know</div>
+      <div class="card-title">kamu layak dapet perhatian yang baik</div>
+      <div class="card-text">word of affirmation person butuh diingetin bahwa mereka <em>dilihat dan diapresiasi.</em> so here it is, kamu dilihat. kamu diapresiasi. 🌸</div>
+    </div>
+    <div class="card">
+      <div class="card-label">🔮 yang aku pengen tau</div>
+      <div class="card-title">masih banyak hal tentang kamu yang bikin aku penasaran</div>
+      <div class="card-text">kita baru mulai, dan aku excited buat kenal kamu lebih. <em>personality, cara pikir, hal-hal kecil yang bikin kamu, kamu.</em> gak perlu buru-buru, aku gak ke mana-mana 🙂</div>
+    </div>
+  </div>
+
+  <div class="highlight-card pulse">
+    <div class="stars">⭐ ⭐ ⭐</div>
+    <div class="card-title">tldr; kamu itu menyenangkan, Rafli</div>
+    <div class="card-text">dan aku beneran seneng tiap kali kamu bales. even kalau nungguinnya bikin aku grow as a person wkwk 😭<br><br>have a great day ya 🌸</div>
+  </div>
+
+  <div class="section-divider" style="margin-top:2rem;"><span class="section-label">🔮 aku pengen kenal kamu lebih</span></div>
+  <p style="text-align:center; font-size:0.9rem; color:#636e72; margin-bottom:1.2rem; font-weight:600;">5 pertanyaan kecil, jawab jujur ya 🙂</p>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progress" style="width:0%"></div>
+  </div>
+
+  <div class="qcard" id="qcard">
+    <div class="q-label">pertanyaan</div>
+    <div class="q-num" id="q-num">1 of 5</div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="options"></div>
+    <div class="response-box" id="response-box">
+      <span class="response-emoji" id="response-emoji"></span>
+      <span id="response-text"></span>
+    </div>
+    <button class="next-btn" id="next-btn">lanjut ➜</button>
+  </div>
+
+  <div class="final-card" id="final-card">
+    <span class="final-emoji">🌸</span>
+    <div class="final-title">makasih udah jawab, Rafli!</div>
+    <div class="final-text">ini bukan quiz biasa. aku cuma genuinely pengen tau lebih tentang kamu. dan dari jawaban kamu tadi... <strong>makin penasaran aja sih 🙂</strong></div>
+    <div class="final-answers" id="final-answers"></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">from someone yang masih belajar kenal kamu 🙂</div>
+    <div class="footer-sub">made with care, just for you</div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    q: "kalau lagi capek banget, kamu lebih suka ngapain?",
+    options: [
+      { text: "rebahan sambil scroll hp sendirian", emoji: "🌙", response: "introvert recharge mode. kamu tipe yang butuh me-time buat balik jadi diri sendiri dan itu bukan hal buruk sama sekali 🙂" },
+      { text: "ngobrol atau hang out sama orang deket", emoji: "🫂", response: "orang yang dapet energi dari koneksi sama orang lain. makes sense kenapa quality time jadi love language kamu 🌸" },
+      { text: "tidur aja, skip semua", emoji: "😴", response: "haha valid banget! kadang solusi terbaik emang tutup mata dulu. kamu tipe yang tau batas diri sendiri 💛" },
+      { text: "nonton atau dengerin musik sambil rebahan", emoji: "🎵", response: "comfort content as a coping mechanism. aku rasa kamu punya playlist favorit yang udah disetel ribuan kali 👀" }
+    ]
+  },
+  {
+    q: "kalau kamu bisa pergi ke mana aja besok, kamu pilih...",
+    options: [
+      { text: "pantai yang sepi dan tenang", emoji: "🌊", response: "kamu tipe yang suka ketenangan dan ruang buat mikir. nature person sejati 🌿" },
+      { text: "kota baru yang belum pernah dikunjungin", emoji: "✈️", response: "adventurous! kamu suka hal baru dan pengalaman yang unexpected. cocok banget sama vibe kamu yang open 🙂" },
+      { text: "tempat makan enak sama orang-orang tersayang", emoji: "🍜", response: "food plus people sama dengan perfect day buat kamu. quality time person sejati 💛" },
+      { text: "di rumah aja, cozy dan santai", emoji: "🏠", response: "homebody vibes. kamu nemu comfort di hal-hal familiar dan itu genuinely wholesome 🌸" }
+    ]
+  },
+  {
+    q: "orang yang baru kenal kamu biasanya salah sangka soal apa?",
+    options: [
+      { text: "dikira cuek, padahal perhatian banget", emoji: "🫶", response: "slow burn type. kamu butuh waktu buat warm up tapi kalau udah deket, all in. aku mau tau versi itu 👀" },
+      { text: "dikira serius mulu, padahal banyak lucunya", emoji: "😂", response: "wkwk ini relatable banget! orang sering underestimate humor kamu ya? aku mau denger jokes kamu sih 🙂" },
+      { text: "dikira kuat, padahal juga butuh dipeluk", emoji: "🥺", response: "kamu tipe yang jago jaga orang lain tapi sering lupa bilang kalau kamu juga butuh dijaga. noted 💙" },
+      { text: "dikira pendiem, padahal bawel kalau udah nyaman", emoji: "💬", response: "jadi aku harus sabar buat denger versi bawel kamu? challenge accepted 😏" }
+    ]
+  },
+  {
+    q: "hal kecil yang bikin hari kamu instantly lebih baik?",
+    options: [
+      { text: "dapat pesan dari orang yang kamu suka", emoji: "💌", response: "word of affirmation person detected 🙂 sebuah pesan yang tepat di waktu yang tepat bisa mengubah segalanya ya" },
+      { text: "kopi atau makanan favorit di pagi hari", emoji: "☕", response: "simple pleasures type. kamu tau cara appreciate hal kecil dan itu bikin kamu lebih menyenangkan buat ada di sekitar 💛" },
+      { text: "langit bagus waktu golden hour", emoji: "🌅", response: "aesthetic soul! kamu notice keindahan yang orang lain sering skip. itu hal yang aku suka 🌸" },
+      { text: "ketawa bareng sampai sakit perut", emoji: "😭", response: "koneksi genuine lewat tawa. kamu tipe yang value momen lebih dari hal materiil. rare dan wholesome 🫶" }
+    ]
+  },
+  {
+    q: "kalau kita bisa ngobrol seharian, kamu mau bahas apa?",
+    options: [
+      { text: "cerita-cerita hidup yang random dan personal", emoji: "🌙", response: "kamu tipe yang connect lewat vulnerabilitas dan cerita nyata. itu berarti buat aku 🙂" },
+      { text: "hal-hal yang lagi kamu pikirin akhir-akhir ini", emoji: "🧠", response: "deep thinker! kamu suka eksplorasi ide dan dikasih ruang buat mikir keras. let's go, aku siap dengerin 💜" },
+      { text: "jokes random, bercanda gak jelas", emoji: "😂", response: "quality time terbaik versi kamu adalah yang penuh tawa ya. aku in, asalkan kamu yang mulai duluan wkwk" },
+      { text: "mimpi dan hal-hal yang pengen dicapai", emoji: "🌟", response: "visioner! kamu punya hal-hal yang pengen diraih dan aku genuinely mau tau itu semua 🌸" }
+    ]
+  }
+];
+
+let current = 0;
+let selectedAnswers = [];
+
+function render() {
+  const q = questions[current];
+  document.getElementById('q-num').textContent = `${current + 1} of 5`;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('progress').style.width = `${(current / 5) * 100}%`;
+  const optDiv = document.getElementById('options');
+  optDiv.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectOption(i);
+    optDiv.appendChild(btn);
+  });
+  document.getElementById('response-box').classList.remove('show');
+  document.getElementById('next-btn').classList.remove('show');
+}
+
+function selectOption(i) {
+  const opt = questions[current].options[i];
+  document.querySelectorAll('.option-btn').forEach((btn, idx) => {
+    btn.classList.remove('selected');
+    if (idx === i) btn.classList.add('selected');
+  });
+  document.getElementById('response-emoji').textContent = opt.emoji;
+  document.getElementById('response-text').textContent = opt.response;
+  document.getElementById('response-box').classList.add('show');
+  document.getElementById('next-btn').classList.add('show');
+  document.getElementById('next-btn').textContent = current < 4 ? 'lanjut ➜' : 'selesai 🌸';
+  selectedAnswers[current] = { q: questions[current].q, a: opt.text, emoji: opt.emoji };
+}
+
+document.getElementById('next-btn').onclick = () => {
+  current++;
+  if (current >= 5) {
+    document.getElementById('qcard').style.display = 'none';
+    document.getElementById('progress').style.width = '100%';
+    const finalCard = document.getElementById('final-card');
+    finalCard.classList.add('show');
+    const answersDiv = document.getElementById('final-answers');
+    answersDiv.innerHTML = '';
+    selectedAnswers.forEach(a => {
+      const item = document.createElement('div');
+      item.className = 'final-answer-item';
+      item.innerHTML = `<strong>${a.emoji} ${a.q}</strong><br>${a.a}`;
+      answersDiv.appendChild(item);
+    });
+  } else {
+    render();
+  }
+};
+
+const confetti = document.getElementById('confetti');
+const colors = ['#fd79a8','#fdcb6e','#55efc4','#74b9ff','#a29bfe','#ff7675','#00cec9'];
+for (let i = 0; i < 25; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  const size = Math.random() * 10 + 6;
+  dot.style.cssText = `width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}%;animation-duration:${Math.random()*8+6}s;animation-delay:${Math.random()*5}s;`;
+  confetti.appendChild(dot);
+}
+
+render();
+</script>
+</body>
+</html>
